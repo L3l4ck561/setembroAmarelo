@@ -194,8 +194,10 @@
                     triteza até o ponto B. Pra começar, um passo de cada vez...</label>
                 <div class="shift-control">
                     <input type="range" id="shift" min="0" max="9" value="0">
-                    <div class="shift-animation"><span class="shift-value">...</span></div>
-                    
+                    <div style="display: flex;">
+                    <img id="img-shift" src="1.webp" alt="" width="100px" style="border-radius: 10px;margin-right: 5px;">
+                    <div><div class="shift-animation"><span class="shift-value">...</span></div></div>
+                    </div>
                 </div>
             </div>
             <div class="item none"></div>
@@ -214,22 +216,25 @@
         const shiftValue = document.querySelector('.shift-value');
         const boxShift = document.getElementsByClassName('shift-animation')[0]
         const body = document.getElementsByTagName('body')[0]
-        const frases = ['',
-            "1º passo: A tristeza não é fraqueza. É um pedido silencioso de cuidado.",
-            "2º passo: Sentir dor faz parte da vida. Falar sobre ela pode transformar tudo.",
-            "3º passo: Não esconda sua tristeza. Compartilhá-la abre espaço para o acolhimento.",
-            "4º passo: Sua vida é valiosa. Mesmo nos dias cinzas, você importa.",
-            "5º passo: Toda emoção tem um papel. Até a tristeza pode nos guiar ao cuidado.",
-            "6º passo: Você não precisa enfrentar tudo sozinho. Falar é o primeiro passo.",
-            "7º passo: A tristeza pode nos aproximar de quem se importa.",
-            "8º passo: ",
-            "continue caminhando: O silêncio pesa. A conversa alivia.",
+        const imgShift = document.getElementById('img-shift')
+        const frases = [
+            {'frase':"...",'img':"1.webp"},
+            {'frase':"1º passo: A tristeza não é fraqueza. É um pedido silencioso de cuidado.",'img':"1.webp"},
+            {'frase':"2º passo: Sentir dor faz parte da vida. Falar sobre ela pode transformar tudo.",'img':"2.webp"},
+            {'frase':"3º passo: Não esconda sua tristeza. Compartilhá-la abre espaço para o acolhimento.",'img':"3.webp"},
+            {'frase':"4º passo: Sua vida é valiosa. Mesmo nos dias cinzas, você importa.",'img':"4.webp"},
+            {'frase':"5º passo: Toda emoção tem um papel. Até a tristeza pode nos guiar ao cuidado.",'img':"5.webp"},
+            {'frase':"6º passo: Você não precisa enfrentar tudo sozinho. Falar é o primeiro passo.",'img':"6.webp"},
+            {'frase':"7º passo: A tristeza pode nos aproximar de quem se importa.",'img':"7.webp"},
+            {'frase':"8º passo: ",'img':"8.webp"},
+            {'frase':"continue caminhando: O silêncio pesa. A conversa alivia.",'img':"9.gif"},
         ]
         shiftSlider.addEventListener('input', () => {
+            imgShift.src = frases[shiftSlider.value].img;
             boxShift.style.animation = "none";
             boxShift.offsetHeight;
             boxShift.style.animation = "pulsar 0.5s ease-out";
-            shiftValue.textContent = frases[shiftSlider.value];
+            shiftValue.textContent = frases[shiftSlider.value].frase;
             body.style.background = `linear-gradient(to bottom, rgb(${25*shiftSlider.value}, ${30*shiftSlider.value}, ${30*shiftSlider.value}), rgb(${2*shiftSlider.value}, ${10*shiftSlider.value+71}, ${10*shiftSlider.value+138}))`
         });
 
