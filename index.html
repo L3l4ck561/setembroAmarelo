@@ -19,7 +19,7 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            background: linear-gradient(to bottom, rgb(209, 255, 255), aqua);
+            background: linear-gradient(to bottom, rgb(0, 0, 0), rgb(0, 71, 138));
         }
 
         header {
@@ -33,7 +33,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            text-shadow: 2px 1px 0 rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 1px 0 rgba(150, 150, 150, 0.5);
             color: blue;
         }
 
@@ -104,6 +104,10 @@
 
         .shift-animation {
             width: 200px;
+            background-color: rgba(0, 255, 255, 0.3);
+            padding: 10px;
+            border-radius: 10px;
+            border-top-left-radius:0;
         }
 
         @keyframes pulsar {
@@ -190,7 +194,7 @@
                     triteza até o ponto B. Pra começar, um passo de cada vez...</label>
                 <div class="shift-control">
                     <input type="range" id="shift" min="0" max="9" value="0">
-                    <div class="shift-animation"><span class="shift-value"></span></div>
+                    <div class="shift-animation"><span class="shift-value">...</span></div>
                     
                 </div>
             </div>
@@ -208,6 +212,8 @@
     <script>
         const shiftSlider = document.getElementById('shift');
         const shiftValue = document.querySelector('.shift-value');
+        const boxShift = document.getElementsByClassName('shift-animation')[0]
+        const body = document.getElementsByTagName('body')[0]
         const frases = ['',
             "1º passo: A tristeza não é fraqueza. É um pedido silencioso de cuidado.",
             "2º passo: Sentir dor faz parte da vida. Falar sobre ela pode transformar tudo.",
@@ -220,10 +226,11 @@
             "continue caminhando: O silêncio pesa. A conversa alivia.",
         ]
         shiftSlider.addEventListener('input', () => {
-            document.getElementsByClassName('shift-animation')[0].style.animation = "none";
-            document.getElementsByClassName('shift-animation')[0].offsetHeight;
-            document.getElementsByClassName('shift-animation')[0].style.animation = "pulsar 0.5s ease-out";
+            boxShift.style.animation = "none";
+            boxShift.offsetHeight;
+            boxShift.style.animation = "pulsar 0.5s ease-out";
             shiftValue.textContent = frases[shiftSlider.value];
+            body.style.background = `linear-gradient(to bottom, rgb(${25*shiftSlider.value}, ${30*shiftSlider.value}, ${30*shiftSlider.value}), rgb(${2*shiftSlider.value}, ${10*shiftSlider.value+71}, ${10*shiftSlider.value+138}))`
         });
 
     </script>
