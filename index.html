@@ -61,12 +61,11 @@
 
         .container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
             grid-template-rows: auto;
-            gap: 10px;
         }
 
-        .item {
+        .item,
+        .item-secondary {
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             background-color: aliceblue;
             border-radius: 10px;
@@ -91,6 +90,61 @@
             flex-direction: column;
             align-items: stretch;
         }
+
+
+        @media only screen and (max-width:768px) {
+            .container {
+                grid-template-columns: repeat(1, 1fr);
+                gap: 10px;
+            }
+            .item-secondary {
+                display: none;
+            }
+            #item-primary {
+                grid-row: 1 / span 3;
+            }
+        }
+
+        @media only screen and (min-width:768px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .none{
+                display: none;
+            }
+
+            .item-secondary {
+                grid-row: span 2;
+            }
+
+            #item-primary {
+                grid-column: 1 / span 2;
+                grid-row: 1 / span 3;
+            }
+
+        }
+
+        @media only screen and (min-width:1024px) {
+            .container {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+
+            .item-secondary {
+                grid-row: span 2;
+            }
+
+            .none{
+                display: block;
+            }
+
+            #item-primary {
+                grid-column: 1 / span 3;
+                grid-row: 1 / span 3;
+            }
+        }
     </style>
 </head>
 
@@ -104,15 +158,15 @@
     </header>
     <main>
         <div class="container">
-            <div class="item" style="grid-area: 1 / 1 / 4 / 4;">
+            <div class="item" id="item-primary">
 
             </div>
+            <div class="item none"></div>
             <div class="item"></div>
             <div class="item"></div>
-            <div class="item"></div>
-            <div class="item" style="grid-area: 5 / 1 / 7 / 1;"></div>
-            <div class="item" style="grid-area: 5 / 2 / 7 / 2;"></div>
-            <div class="item" style="grid-area: 5 / 3 / 7 / 3;"></div>
+            <div class="item-secondary none"></div>
+            <div class="item-secondary"></div>
+            <div class="item-secondary"></div>
         </div>
     </main>
     <footer>
