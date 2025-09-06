@@ -52,15 +52,20 @@
             padding: 5px;
         }
 
-        .msg{
+        .msg {
             background-color: yellow;
-            height: 20px;
-            width: 20px;
-            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 17px;
+            height: 17px;
             border-radius: 50%;
-            cursor: pointer;
+            color: white;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
         }
-        .msgbox{
+
+        .msgbox {
             display: none;
             position: absolute;
             background-color: rgb(255, 231, 122);
@@ -72,7 +77,10 @@
             border-top-right-radius: 0;
             margin-top: 2px;
         }
-        .msg:hover ~ .msgbox{display: block;}
+
+        .msg:hover~.msgbox {
+            display: block;
+        }
 
         .container {
             width: 100%;
@@ -129,18 +137,19 @@
             background-color: rgba(0, 255, 255, 0.3);
             padding: 10px;
             border-radius: 10px;
-            border-top-left-radius:0;
+            border-top-left-radius: 0;
         }
 
         @keyframes pulsar {
-        0%{
-            opacity: 0;
-            transform: translateX(-20px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateX(0);
-        }
+            0% {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         @media only screen and (max-width:768px) {
@@ -213,9 +222,11 @@
         <div class="container">
             <div class="item" id="item-primary">
                 <div class="info" style="display: flex;">
-                <label for="shift" style="flex: 3;">Caminhar meio aos desafios, a cada <b>passo</b>, aprendemos alguma coisa que nos deixa mais forte. Tente! leve a
-                    triteza até o ponto B. Pra começar, um passo de cada vez...</label>
-                    <div class="info"><p class="msg">🛈</p>
+                    <label for="shift" style="flex: 3;">Caminhar meio aos desafios, a cada <b>passo</b>, aprendemos
+                        alguma coisa que nos deixa mais forte. Tente! leve a
+                        triteza até o ponto B. Pra começar, um passo de cada vez...</label>
+                    <div class="info">
+                        <p class="msg">i</p>
                         <div class="msgbox">
                             <p>arraste o thumb da barra verde para caminhar com a Trizteza e ouvir seus conselhos.</p>
                         </div>
@@ -224,8 +235,11 @@
                 <div class="shift-control">
                     <input type="range" id="shift" min="0" max="9" value="0">
                     <div style="display: flex;">
-                    <img id="img-shift" src="1.webp" alt="" width="100px" style="border-radius: 10px;margin-right: 5px;">
-                    <div><div class="shift-animation"><span class="shift-value">...</span></div></div>
+                        <img id="img-shift" src="1.webp" alt="" width="100px"
+                            style="border-radius: 10px;margin-right: 5px;">
+                        <div>
+                            <div class="shift-animation"><span class="shift-value">...</span></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -247,16 +261,16 @@
         const body = document.getElementsByTagName('body')[0]
         const imgShift = document.getElementById('img-shift')
         const frases = [
-            {'frase':"...",'img':"1.webp"},
-            {'frase':"1º passo: A tristeza não é fraqueza. É um pedido silencioso de cuidado.",'img':"1.webp"},
-            {'frase':"2º passo: Sentir dor faz parte da vida. Falar sobre ela pode transformar tudo.",'img':"2.webp"},
-            {'frase':"3º passo: Não esconda sua tristeza. Compartilhá-la abre espaço para o acolhimento.",'img':"3.webp"},
-            {'frase':"4º passo: Sua vida é valiosa. Mesmo nos dias cinzas, você importa.",'img':"4.webp"},
-            {'frase':"5º passo: Toda emoção tem um papel. Até a tristeza pode nos guiar ao cuidado.",'img':"5.webp"},
-            {'frase':"6º passo: Você não precisa enfrentar tudo sozinho. Falar é o primeiro passo.",'img':"6.webp"},
-            {'frase':"7º passo: A tristeza pode nos aproximar de quem se importa.",'img':"7.webp"},
-            {'frase':"8º passo: ",'img':"8.webp"},
-            {'frase':"continue caminhando: O silêncio pesa. A conversa alivia.",'img':"9.gif"},
+            { 'frase': "...", 'img': "1.webp" },
+            { 'frase': "1º passo: A tristeza não é fraqueza. É um pedido silencioso de cuidado.", 'img': "1.webp" },
+            { 'frase': "2º passo: Sentir dor faz parte da vida. Falar sobre ela pode transformar tudo.", 'img': "2.webp" },
+            { 'frase': "3º passo: Não esconda sua tristeza. Compartilhá-la abre espaço para o acolhimento.", 'img': "3.webp" },
+            { 'frase': "4º passo: Sua vida é valiosa. Mesmo nos dias cinzas, você importa.", 'img': "4.webp" },
+            { 'frase': "5º passo: Toda emoção tem um papel. Até a tristeza pode nos guiar ao cuidado.", 'img': "5.webp" },
+            { 'frase': "6º passo: Você não precisa enfrentar tudo sozinho. Falar é o primeiro passo.", 'img': "6.webp" },
+            { 'frase': "7º passo: A tristeza pode nos aproximar de quem se importa.", 'img': "7.webp" },
+            { 'frase': "8º passo: ", 'img': "8.webp" },
+            { 'frase': "continue caminhando: O silêncio pesa. A conversa alivia.", 'img': "9.gif" },
         ]
         shiftSlider.addEventListener('input', () => {
             imgShift.src = frases[shiftSlider.value].img;
@@ -264,7 +278,7 @@
             boxShift.offsetHeight;
             boxShift.style.animation = "pulsar 0.5s ease-out";
             shiftValue.textContent = frases[shiftSlider.value].frase;
-            body.style.background = `linear-gradient(to bottom, rgb(${25*shiftSlider.value}, ${30*shiftSlider.value}, ${30*shiftSlider.value}), rgb(${2*shiftSlider.value}, ${10*shiftSlider.value+71}, ${10*shiftSlider.value+138}))`
+            body.style.background = `linear-gradient(to bottom, rgb(${25 * shiftSlider.value}, ${30 * shiftSlider.value}, ${30 * shiftSlider.value}), rgb(${2 * shiftSlider.value}, ${10 * shiftSlider.value + 71}, ${10 * shiftSlider.value + 138}))`
         });
 
     </script>
