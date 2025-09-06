@@ -71,35 +71,62 @@
             border-radius: 10px;
         }
 
+        #item-primary {
+            padding: 20px;
+        }
 
-        .shift-control {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        /* Remove estilos padrão */
+        input[type=range] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 6px;
+            background: green;
+            border-radius: 3px;
+            outline: none;
             margin: 20px 0;
         }
 
-        .shift-value {
-            min-width: 50px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 1.2rem;
+        /* Bolinha no IE/Edge antigo */
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 40px;
+            /* largura da imagem */
+            height: 40px;
+            /* altura da imagem */
+            background: url("img.png") no-repeat center;
+            background-size: contain;
+            /* ajusta a imagem */
+            border: none;
+            cursor: pointer;
         }
 
-        .shift-control {
-            flex-direction: column;
-            align-items: stretch;
+        .shift-animation {
+            width: 150px;
         }
 
+        @keyframes pulsar {
+        0%{
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        }
 
         @media only screen and (max-width:768px) {
             .container {
                 grid-template-columns: repeat(1, 1fr);
                 gap: 10px;
             }
+
             .item-secondary {
                 display: none;
             }
+
             #item-primary {
                 grid-row: 1 / span 3;
             }
@@ -111,7 +138,7 @@
                 gap: 30px;
             }
 
-            .none{
+            .none {
                 display: none;
             }
 
@@ -136,7 +163,7 @@
                 grid-row: span 2;
             }
 
-            .none{
+            .none {
                 display: block;
             }
 
@@ -159,7 +186,13 @@
     <main>
         <div class="container">
             <div class="item" id="item-primary">
-
+                <label for="shift">Caminhar meio aos desafios, ensina muito de como se tornar mais forte. Tente! leve a
+                    triteza até o ponto B</label>
+                <div class="shift-control">
+                    <input type="range" id="shift" min="1" max="9" value="1">
+                    <div class="shift-animation"><span class="shift-value"></span></div>
+                    
+                </div>
             </div>
             <div class="item none"></div>
             <div class="item"></div>
@@ -173,6 +206,25 @@
         <p>Acolha. Escute. Valorize a vida.</p>
     </footer>
     <script>
+        const shiftSlider = document.getElementById('shift');
+        const shiftValue = document.querySelector('.shift-value');
+        const frases = ['',
+            "A tristeza não é fraqueza. É um pedido silencioso de cuidado.",
+            "Sentir dor faz parte da vida. Falar sobre ela pode transformar tudo.",
+            "Não esconda sua tristeza. Compartilhá-la abre espaço para o acolhimento.",
+            "Sua vida é valiosa. Mesmo nos dias cinzas, você importa.",
+            "Toda emoção tem um papel. Até a tristeza pode nos guiar ao cuidado.",
+            "Você não precisa enfrentar tudo sozinho. Falar é o primeiro passo.",
+            "A tristeza pode nos aproximar de quem se importa.",
+            "Está difícil? Tudo bem. Procure ajuda, sua vida tem sentido.",
+            "O silêncio pesa. A conversa alivia.",
+        ]
+        shiftSlider.addEventListener('input', () => {
+            document.getElementsByClassName('shift-animation')[0].style.animation = "none";
+            document.getElementsByClassName('shift-animation')[0].offsetHeight;
+            document.getElementsByClassName('shift-animation')[0].style.animation = "pulsar 0.5s ease-out";
+            shiftValue.textContent = frases[shiftSlider.value - 1];
+        });
 
     </script>
 </body>
