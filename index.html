@@ -103,7 +103,7 @@
         }
 
         .shift-animation {
-            width: 150px;
+            width: 200px;
         }
 
         @keyframes pulsar {
@@ -186,10 +186,10 @@
     <main>
         <div class="container">
             <div class="item" id="item-primary">
-                <label for="shift">Caminhar meio aos desafios, ensina muito de como se tornar mais forte. Tente! leve a
-                    triteza até o ponto B</label>
+                <label for="shift">Caminhar meio aos desafios, a cada <b>passo</b>, aprendemos alguma coisa que nos deixa mais forte. Tente! leve a
+                    triteza até o ponto B. Pra começar, um passo de cada vez...</label>
                 <div class="shift-control">
-                    <input type="range" id="shift" min="1" max="9" value="1">
+                    <input type="range" id="shift" min="0" max="9" value="0">
                     <div class="shift-animation"><span class="shift-value"></span></div>
                     
                 </div>
@@ -209,21 +209,21 @@
         const shiftSlider = document.getElementById('shift');
         const shiftValue = document.querySelector('.shift-value');
         const frases = ['',
-            "A tristeza não é fraqueza. É um pedido silencioso de cuidado.",
-            "Sentir dor faz parte da vida. Falar sobre ela pode transformar tudo.",
-            "Não esconda sua tristeza. Compartilhá-la abre espaço para o acolhimento.",
-            "Sua vida é valiosa. Mesmo nos dias cinzas, você importa.",
-            "Toda emoção tem um papel. Até a tristeza pode nos guiar ao cuidado.",
-            "Você não precisa enfrentar tudo sozinho. Falar é o primeiro passo.",
-            "A tristeza pode nos aproximar de quem se importa.",
-            "Está difícil? Tudo bem. Procure ajuda, sua vida tem sentido.",
-            "O silêncio pesa. A conversa alivia.",
+            "1º passo: A tristeza não é fraqueza. É um pedido silencioso de cuidado.",
+            "2º passo: Sentir dor faz parte da vida. Falar sobre ela pode transformar tudo.",
+            "3º passo: Não esconda sua tristeza. Compartilhá-la abre espaço para o acolhimento.",
+            "4º passo: Sua vida é valiosa. Mesmo nos dias cinzas, você importa.",
+            "5º passo: Toda emoção tem um papel. Até a tristeza pode nos guiar ao cuidado.",
+            "6º passo: Você não precisa enfrentar tudo sozinho. Falar é o primeiro passo.",
+            "7º passo: A tristeza pode nos aproximar de quem se importa.",
+            "8º passo: ",
+            "continue caminhando: O silêncio pesa. A conversa alivia.",
         ]
         shiftSlider.addEventListener('input', () => {
             document.getElementsByClassName('shift-animation')[0].style.animation = "none";
             document.getElementsByClassName('shift-animation')[0].offsetHeight;
             document.getElementsByClassName('shift-animation')[0].style.animation = "pulsar 0.5s ease-out";
-            shiftValue.textContent = frases[shiftSlider.value - 1];
+            shiftValue.textContent = frases[shiftSlider.value];
         });
 
     </script>
