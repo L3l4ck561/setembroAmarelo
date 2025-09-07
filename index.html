@@ -61,7 +61,7 @@
             width: 17px;
             height: 17px;
             border-radius: 50%;
-            color: white;
+            color: #555;
             font-family: Arial, sans-serif;
             font-weight: bold;
         }
@@ -72,7 +72,7 @@
             background-color: rgb(255, 231, 122);
             width: 150px;
             transform: translateX(-135px);
-            font-size: 11px;
+            font-size: 12px;
             padding: 5px;
             border-radius: 10px;
             border-top-right-radius: 0;
@@ -162,10 +162,6 @@
             .item-secondary {
                 display: none;
             }
-
-            #item-primary {
-                grid-row: 1 / span 3;
-            }
         }
 
         @media only screen and (min-width:768px) {
@@ -184,7 +180,6 @@
 
             #item-primary {
                 grid-column: 1 / span 2;
-                grid-row: 1 / span 3;
             }
 
         }
@@ -205,8 +200,11 @@
 
             #item-primary {
                 grid-column: 1 / span 3;
-                grid-row: 1 / span 3;
             }
+        }
+        #info{
+            border-left: 5px solid blue;
+            padding-left: 5px;
         }
     </style>
 </head>
@@ -222,7 +220,8 @@
     <main>
         <div class="container">
             <div class="item" id="item-primary">
-                <div class="info" style="display: flex;">
+                <p id="info">A tristeza faz parte da vida. Reconhecer e falar sobre ela é o primeiro passo para o cuidado.</p>
+                <br><div class="info" style="display: flex;">
                     <label for="shift" style="flex: 3;">Caminhar meio aos desafios, a cada <b>passo</b>, aprendemos
                         alguma coisa que nos deixa mais forte. Tente! leve a
                         triteza até o ponto B. Pra começar, um passo de cada vez...</label>
