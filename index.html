@@ -93,7 +93,7 @@
             grid-template-rows: auto;
         }
 
-        .item-secondary,
+        .item-secondary,.item,
         #item-primary {
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             background-color: aliceblue;
@@ -140,7 +140,7 @@
 
         .shift-animation {
             max-width: 200px;
-            background-color: rgba(0, 255, 255, 0.3);
+            background-color: rgba(0, 255, 255,0.7);
             padding: 10px;
             border-radius: 10px;
             border-top-left-radius: 0;
@@ -162,6 +162,8 @@
             border-left: 5px solid blue;
             padding-left: 5px;
         }
+
+        .texto{color: aliceblue;}
 
         @media only screen and (max-width:768px) {
             .container {
@@ -204,11 +206,12 @@
                 display: block;
             }
 
-            #item-primary {
-                grid-column: 1 / span 3;
+            #item-primary1 {
+                grid-column: 1 / span 2;
+                grid-row: 1 / span 3;
             }
 
-            .item-title {
+            .item-title,#item-primary {
                 grid-column: span 3;
             }
         }
@@ -225,12 +228,12 @@
     </header>
     <main>
         <div class="container">
-            <div class="item" id="item-primary">
-                <p id="info">A tristeza faz parte da vida. Reconhecer e falar sobre ela é o primeiro passo para o
+            <div id="item-primary1">
+                <p id="info" class="texto">A tristeza faz parte da vida. Reconhecer e falar sobre ela é o primeiro passo para o
                     cuidado.</p>
                 <br>
                 <div class="info" style="display: flex;">
-                    <label for="shift" style="flex: 3;">Caminhar meio aos desafios, a cada <b>passo</b>, aprendemos
+                    <label for="shift" class="texto" style="flex: 3;">Caminhar meio aos desafios, a cada <b>passo</b>, aprendemos
                         alguma coisa que nos deixa mais forte. Tente! leve a
                         triteza até o ponto B. Pra começar, um passo de cada vez...</label>
                     <div class="info">
@@ -242,7 +245,7 @@
                 </div>
                 <div class="shift-control">
                     <input type="range" id="shift" min="0" max="9" value="0">
-                    <div style="display: flex;">
+                    <div style="display: flex; justify-content: center;">
                         <img id="img-shift" src="1.webp" alt="" width="100px"
                             style="border-radius: 10px;margin-right: 5px;">
                         <div>
@@ -251,6 +254,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="item" id="item-primary">
 
             </div>
@@ -275,6 +279,7 @@
         const body = document.getElementsByTagName('body')[0]
         const imgShift = document.getElementById('img-shift')
         const itemTitle = document.querySelectorAll('.item-title')
+        const texto = document.querySelectorAll('.texto')
         const frases = [
             { 'frase': "...", 'img': "1.webp" },
             { 'frase': "1º passo: Você não precisa enfrentar tudo sozinho. Falar é o primeiro passo.", 'img': "1.webp" },
@@ -297,7 +302,9 @@
 
             if (shiftSlider.value > 5) {
                 itemTitle.forEach(e => e.style.color = '#320061')
+                texto.forEach(e => e.style.color = '#000')
             } else {
+                texto.forEach(e => e.style.color = 'aliceblue')
                 itemTitle.forEach(e => e.style.color = '#fff')
             }
         });
