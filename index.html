@@ -17,7 +17,6 @@
 
         body {
             min-height: 100vh;
-            height: 100vh;
             display: flex;
             flex-direction: column;
             background: linear-gradient(to bottom, rgb(0, 0, 0), rgb(0, 71, 138));
@@ -85,8 +84,7 @@
 
         .container {
             width: 100%;
-            max-width: 900px;
-            height: 100%;
+            max-width: 900px;         
             padding: 20px;
         }
 
@@ -95,11 +93,18 @@
             grid-template-rows: auto;
         }
 
-        .item,
-        .item-secondary {
+        .item-secondary,
+        #item-primary {
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             background-color: aliceblue;
             border-radius: 10px;
+        }
+
+        .item-title {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
         }
 
         #item-primary {
@@ -153,14 +158,15 @@
             }
         }
 
+        #info {
+            border-left: 5px solid blue;
+            padding-left: 5px;
+        }
+
         @media only screen and (max-width:768px) {
             .container {
                 grid-template-columns: repeat(1, 1fr);
                 gap: 10px;
-            }
-
-            .item-secondary {
-                display: none;
             }
         }
 
@@ -174,12 +180,12 @@
                 display: none;
             }
 
-            .item-secondary {
-                grid-row: span 2;
-            }
-
             #item-primary {
                 grid-column: 1 / span 2;
+            }
+
+            .item-title {
+                grid-column: span 2;
             }
 
         }
@@ -201,10 +207,10 @@
             #item-primary {
                 grid-column: 1 / span 3;
             }
-        }
-        #info{
-            border-left: 5px solid blue;
-            padding-left: 5px;
+
+            .item-title {
+                grid-column: span 3;
+            }
         }
     </style>
 </head>
@@ -213,15 +219,17 @@
     <header>
         <img src="img.png" alt="" width="90px" height="90px">
         <div class="title">
-            <h1>Sentir é humano. Falar pode salvar.</h1>
+            <h1>Tá tudo bem não estar bem.</h1>
         </div>
 
     </header>
     <main>
         <div class="container">
             <div class="item" id="item-primary">
-                <p id="info">A tristeza faz parte da vida. Reconhecer e falar sobre ela é o primeiro passo para o cuidado.</p>
-                <br><div class="info" style="display: flex;">
+                <p id="info">A tristeza faz parte da vida. Reconhecer e falar sobre ela é o primeiro passo para o
+                    cuidado.</p>
+                <br>
+                <div class="info" style="display: flex;">
                     <label for="shift" style="flex: 3;">Caminhar meio aos desafios, a cada <b>passo</b>, aprendemos
                         alguma coisa que nos deixa mais forte. Tente! leve a
                         triteza até o ponto B. Pra começar, um passo de cada vez...</label>
@@ -243,12 +251,18 @@
                     </div>
                 </div>
             </div>
-            <div class="item none"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item-secondary none"></div>
-            <div class="item-secondary"></div>
-            <div class="item-secondary"></div>
+            <div class="item" id="item-primary">
+
+            </div>
+            <div class="item" id="item-primary">
+
+            </div>
+            <div class="item-title">
+                <h1>tome agua</h1>
+            </div>
+            <div class="item-secondary none">a</div>
+            <div class="item-secondary">a</div>
+            <div class="item-secondary">a</div>
         </div>
     </main>
     <footer>
@@ -260,14 +274,15 @@
         const boxShift = document.getElementsByClassName('shift-animation')[0]
         const body = document.getElementsByTagName('body')[0]
         const imgShift = document.getElementById('img-shift')
+        const itemTitle = document.querySelectorAll('.item-title')
         const frases = [
             { 'frase': "...", 'img': "1.webp" },
-            { 'frase': "1º passo: A tristeza não é fraqueza. É um pedido silencioso de cuidado.", 'img': "1.webp" },
+            { 'frase': "1º passo: Você não precisa enfrentar tudo sozinho. Falar é o primeiro passo.", 'img': "1.webp" },
             { 'frase': "2º passo: Sentir dor faz parte da vida. Falar sobre ela pode transformar tudo.", 'img': "2.webp" },
             { 'frase': "3º passo: Não esconda sua tristeza. Compartilhá-la abre espaço para o acolhimento.", 'img': "3.webp" },
             { 'frase': "4º passo: Sua vida é valiosa. Mesmo nos dias cinzas, você importa.", 'img': "4.webp" },
             { 'frase': "5º passo: Toda emoção tem um papel. Até a tristeza pode nos guiar ao cuidado.", 'img': "5.webp" },
-            { 'frase': "6º passo: Você não precisa enfrentar tudo sozinho. Falar é o primeiro passo.", 'img': "6.webp" },
+            { 'frase': "6º passo: A tristeza não é fraqueza. É um pedido silencioso de cuidado.", 'img': "6.webp" },
             { 'frase': "7º passo: A tristeza pode nos aproximar de quem se importa.", 'img': "7.webp" },
             { 'frase': "8º passo: ", 'img': "8.webp" },
             { 'frase': "continue caminhando: O silêncio pesa. A conversa alivia.", 'img': "9.gif" },
@@ -279,6 +294,12 @@
             boxShift.style.animation = "pulsar 0.5s ease-out";
             shiftValue.textContent = frases[shiftSlider.value].frase;
             body.style.background = `linear-gradient(to bottom, rgb(${25 * shiftSlider.value}, ${30 * shiftSlider.value}, ${30 * shiftSlider.value}), rgb(${2 * shiftSlider.value}, ${10 * shiftSlider.value + 71}, ${10 * shiftSlider.value + 138}))`
+
+            if (shiftSlider.value > 5) {
+                itemTitle.forEach(e => e.style.color = '#320061')
+            } else {
+                itemTitle.forEach(e => e.style.color = '#fff')
+            }
         });
 
     </script>
