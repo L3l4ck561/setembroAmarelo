@@ -182,7 +182,7 @@
                 display: none;
             }
 
-            #item-primary {
+            #item-primary,#item-primary1 {
                 grid-column: 1 / span 2;
             }
 
@@ -208,7 +208,6 @@
 
             #item-primary1 {
                 grid-column: 1 / span 2;
-                grid-row: 1 / span 3;
             }
 
             .item-title,#item-primary {
@@ -300,7 +299,7 @@
             shiftValue.textContent = frases[shiftSlider.value].frase;
             body.style.background = `linear-gradient(to bottom, rgb(${25 * shiftSlider.value}, ${30 * shiftSlider.value}, ${30 * shiftSlider.value}), rgb(${2 * shiftSlider.value}, ${10 * shiftSlider.value + 71}, ${10 * shiftSlider.value + 138}))`
 
-            if (shiftSlider.value > 5) {
+            if (shiftSlider.value > 4) {
                 itemTitle.forEach(e => e.style.color = '#320061')
                 texto.forEach(e => e.style.color = '#000')
             } else {
