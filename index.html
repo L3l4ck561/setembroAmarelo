@@ -84,7 +84,7 @@
 
         .container {
             width: 100%;
-            max-width: 900px;         
+            max-width: 900px;
             padding: 20px;
         }
 
@@ -93,7 +93,8 @@
             grid-template-rows: auto;
         }
 
-        .item-secondary,.item,
+        .item-secondary,
+        .item,
         #item-primary {
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             background-color: aliceblue;
@@ -107,7 +108,8 @@
             color: #fff;
         }
 
-        #item-primary {
+        #item-primary,
+        #item-primary2 {
             padding: 20px;
         }
 
@@ -140,7 +142,7 @@
 
         .shift-animation {
             max-width: 200px;
-            background-color: rgba(0, 255, 255,0.7);
+            background-color: rgba(0, 255, 255, 0.7);
             padding: 10px;
             border-radius: 10px;
             border-top-left-radius: 0;
@@ -163,7 +165,9 @@
             padding-left: 5px;
         }
 
-        .texto{color: aliceblue;}
+        .texto {
+            color: aliceblue;
+        }
 
         @media only screen and (max-width:768px) {
             .container {
@@ -182,7 +186,9 @@
                 display: none;
             }
 
-            #item-primary,#item-primary1 {
+            #item-primary,
+            #item-primary1,
+            #item-primary2 {
                 grid-column: 1 / span 2;
             }
 
@@ -210,9 +216,61 @@
                 grid-column: 1 / span 2;
             }
 
-            .item-title,#item-primary {
+            .item-title,
+            #item-primary {
                 grid-column: span 3;
             }
+
+            #item-primary2 {
+                grid-column: span 1;
+            }
+
+            #item-primary3 {
+                grid-column: 2/span 2;
+            }
+        }
+
+        .card {
+            height: 220px;
+            perspective: 1000px;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.8s ease;
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            border-radius: 10px;
+            color: #fff;
+        }
+
+        .card-front {
+            background: #4caf50;
+        }
+
+        .card-back {
+            flex-direction: column;
+            padding: 20px;
+            background: #2196f3;
+            transform: rotateY(180deg);
+        }
+
+        /* Classe que ativa o flip */
+        .card.flipped .card-inner {
+            transform: rotateY(180deg);
         }
     </style>
 </head>
@@ -228,13 +286,15 @@
     <main>
         <div class="container">
             <div id="item-primary1">
-                <p id="info" class="texto">A tristeza faz parte da vida. Reconhecer e falar sobre ela é o primeiro passo para o
+                <p id="info" class="texto">A tristeza faz parte da vida. Reconhecer e falar sobre ela é o primeiro passo
+                    para o
                     cuidado.</p>
                 <br>
                 <div class="info" style="display: flex;">
-                    <label for="shift" class="texto" style="flex: 3;">Caminhar meio aos desafios, a cada <b>passo</b>, aprendemos
+                    <label for="shift" class="texto" style="flex: 3;">Caminhar meio aos desafios, a cada <b>passo</b>,
+                        aprendemos
                         alguma coisa que nos deixa mais forte. Tente! leve a
-                        triteza até o ponto B. Pra começar, um passo de cada vez...</label>
+                        triteza até o ponto B. Para começar, um passo de cada vez...</label>
                     <div class="info">
                         <p class="msg">i</p>
                         <div class="msgbox">
@@ -253,23 +313,102 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="item" id="item-primary">
+                <p>🟡 <b>Setembro Amarelo</b>
+
+                    O Setembro Amarelo é a campanha de prevenção ao suicídio e valorização da vida. Durante todo o mês,
+                    reforçamos a importância de falar sobre saúde mental, acolher sentimentos e oferecer apoio a quem
+                    precisa.</p>
 
             </div>
             <div class="item" id="item-primary">
+                <p>No início, a Alegria vê a Tristeza como um problema que só atrapalha. Quando Riley se muda de cidade,
+                    a
+                    Tristeza começa a aparecer mais, e isso causa conflito.
+                    Por acidente, Alegria e Tristeza são jogadas para fora da sala de controle, enquanto as outras
+                    emoções
+                    tentam comandar a mente de Riley — sem sucesso.</p><br>
+                <img src="orb.webp" width="50px" alt="">
 
+                <p>Durante a jornada de volta, Alegria descobre que a Tristeza tem uma função essencial: permitir que
+                    Riley
+                    expresse sua dor e seja acolhida.
+                    O ponto de virada acontece quando Riley chora diante dos pais, e só então eles entendem o que ela
+                    sente
+                    de verdade.</p><br>
+
+                <p>A superação está em perceber que a tristeza não é inimiga, mas parte importante do equilíbrio
+                    emocional
+                    e dos laços de afeto.</p>
+
+            </div>
+            <div class="item" id="item-primary2">
+                <p>💛 Setembro Amarelo: Você não está sozinho </p>
+                <br>
+                <p> Se você está passando por um momento difícil, saiba que há ajuda e pessoas dispostas a te ouvir.
+                    Cuidar da saúde mental é um ato de coragem. Falar é um passo importante — e pode salvar vidas. 💬
+                </p>
+                <br>
+                <p>📞 Precisa conversar? Ligue <span style="color: blue;">188</span> – atendimento gratuito e sigiloso
+                    24h (CVV).</p>
+            </div>
+            <div id="item-primary3" class="texto">
+                <p>“Oi… eu sou a Tristeza.
+                    Muita gente acha que eu só atrapalho, mas na verdade, eu tenho um papel importante: mostrar quando
+                    as coisas não estão bem.</p>
+                <br>
+
+                <p> O Setembro Amarelo é um lembrete de que sentir tristeza não é errado. É um sinal de que você precisa
+                    de cuidado, de carinho… de alguém que te escute.</p>
+
+                <br>
+                <p> Às vezes, a gente tenta esconder o que sente, mas falar sobre isso pode trazer alívio. Pode
+                    aproximar você das pessoas que se importam de verdade.</p>
+
+                <br>
+                <p>Se está pesado demais, não guarde só pra você. Pedir ajuda é um ato de coragem. Sua vida tem muito
+                    valor, mesmo nos dias mais cinzas.”</p>
             </div>
             <div class="item-title">
                 <h1>tome agua</h1>
             </div>
-            <div class="item-secondary none">a</div>
-            <div class="item-secondary">a</div>
-            <div class="item-secondary">a</div>
+
+            <div class="card flipBtn">
+                <div class="card-inner">
+                    <div class="card-front">Clique aqui</div>
+                    <div class="card-back">
+                        <h3>Fale sobre o que sente</h3>
+                        <p class="anima">o silêncio não precisa ser sua prisão.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card flipBtn">
+                <div class="card-inner">
+                    <div class="card-front">Clique aqui</div>
+                    <div class="card-back">
+                        <h3>Procure apoio</h3>
+                        <p class="anima">pedir ajuda é um ato de coragem, não de fraqueza.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card flipBtn">
+                <div class="card-inner">
+                    <div class="card-front">Clique aqui</div>
+                    <div class="card-back">
+                        <h3>Valorize sua vida</h3>
+                        <p class="anima">você é único, insubstituível e importante neste mundo.</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
     <footer>
         <p>Acolha. Escute. Valorize a vida.</p>
+        <p>© 2025 Tristeza. Todos os direitos reservados.</p>
     </footer>
     <script>
         const shiftSlider = document.getElementById('shift');
@@ -279,17 +418,18 @@
         const imgShift = document.getElementById('img-shift')
         const itemTitle = document.querySelectorAll('.item-title')
         const texto = document.querySelectorAll('.texto')
+        const anima = document.querySelectorAll('.anima')
         const frases = [
             { 'frase': "...", 'img': "1.webp" },
-            { 'frase': "1º passo: Você não precisa enfrentar tudo sozinho. Falar é o primeiro passo.", 'img': "1.webp" },
-            { 'frase': "2º passo: Sentir dor faz parte da vida. Falar sobre ela pode transformar tudo.", 'img': "2.webp" },
-            { 'frase': "3º passo: Não esconda sua tristeza. Compartilhá-la abre espaço para o acolhimento.", 'img': "3.webp" },
-            { 'frase': "4º passo: Sua vida é valiosa. Mesmo nos dias cinzas, você importa.", 'img': "4.webp" },
-            { 'frase': "5º passo: Toda emoção tem um papel. Até a tristeza pode nos guiar ao cuidado.", 'img': "5.webp" },
-            { 'frase': "6º passo: A tristeza não é fraqueza. É um pedido silencioso de cuidado.", 'img': "6.webp" },
-            { 'frase': "7º passo: A tristeza pode nos aproximar de quem se importa.", 'img': "7.webp" },
-            { 'frase': "8º passo: ", 'img': "8.webp" },
-            { 'frase': "continue caminhando: O silêncio pesa. A conversa alivia.", 'img': "9.gif" },
+            { 'frase': "1º passo: Toda emoção tem um papel. Até a tristeza pode nos levar a um recomeço.", 'img': "1.webp" },
+            { 'frase': "2º passo: Está tudo bem não estar bem. O importante é não ficar sozinho com isso.", 'img': "2.webp" },
+            { 'frase': "3º passo: Sua vida tem valor, mesmo quando você não consegue enxergar.", 'img': "3.webp" },
+            { 'frase': "4º passo: Acolha o que você sente. Emoções também são parte da sua força.", 'img': "4.webp" },
+            { 'frase': "5º passo: Você importa. Mais do que imagina, para mais pessoas do que pensa.", 'img': "5.webp" },
+            { 'frase': "6º passo: Falar é o primeiro ato de coragem que abre portas para o cuidado.", 'img': "6.webp" },
+            { 'frase': "7º passo: Compartilhar a dor é o início de encontrar a luz.", 'img': "7.webp" },
+            
+            { 'frase': "continue caminhando: Sempre existe esperança. Você não está sozinho.", 'img': "9.gif" },
         ]
         shiftSlider.addEventListener('input', () => {
             imgShift.src = frases[shiftSlider.value].img;
@@ -308,6 +448,16 @@
             }
         });
 
+        const card = document.querySelectorAll(".card");
+        const btn = document.querySelector(".flipBtn");
+
+        card.forEach((e,i)=>e.addEventListener('click',()=>{
+            e.classList.toggle("flipped");
+
+            anima[i].style.animation = "none";
+            anima[i].offsetHeight;
+            anima[i].style.animation = "pulsar 1.3s ease-out";
+        }))
     </script>
 </body>
 
