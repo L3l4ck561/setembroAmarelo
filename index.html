@@ -272,6 +272,29 @@
         .card.flipped .card-inner {
             transform: rotateY(180deg);
         }
+
+        .bola {
+            margin-right: 20px;
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle at 30% 30%, #4c82af, #1b275e);
+            border-radius: 50%;
+            animation: rolar 15s linear infinite;
+        }
+
+        @keyframes rolar {
+            0% {
+                transform: translateX(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateX(-200%) rotate(-360deg);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
     </style>
 </head>
 
@@ -329,8 +352,6 @@
                     Por acidente, Alegria e Tristeza são jogadas para fora da sala de controle, enquanto as outras
                     emoções
                     tentam comandar a mente de Riley — sem sucesso.</p><br>
-                <img src="orb.webp" width="50px" alt="">
-
                 <p>Durante a jornada de volta, Alegria descobre que a Tristeza tem uma função essencial: permitir que
                     Riley
                     expresse sua dor e seja acolhida.
@@ -338,6 +359,10 @@
                     sente
                     de verdade.</p><br>
 
+                                    <div style="display: flex;flex-direction: row-reverse;border-bottom: 2px solid #555;">
+                    <img src="orb.webp" class="bola" alt="">
+                    <img src="orb2.png" class="bola" alt="">
+                </div><br>
                 <p>A superação está em perceber que a tristeza não é inimiga, mas parte importante do equilíbrio
                     emocional
                     e dos laços de afeto.</p>
@@ -370,8 +395,9 @@
                 <p>Se está pesado demais, não guarde só pra você. Pedir ajuda é um ato de coragem. Sua vida tem muito
                     valor, mesmo nos dias mais cinzas.”</p>
             </div>
-            <div class="item-title">
-                <h1>tome agua</h1>
+            <div class="item-title" style="flex-direction: column;">
+                <h1>Conselho para a vida</h1>
+                <p>Entrego 3 cartas que irão ajudar você a superar seus desafios. Use quando achar melhor 🙃.</p>
             </div>
 
             <div class="card flipBtn">
@@ -428,7 +454,7 @@
             { 'frase': "5º passo: Você importa. Mais do que imagina, para mais pessoas do que pensa.", 'img': "5.webp" },
             { 'frase': "6º passo: Falar é o primeiro ato de coragem que abre portas para o cuidado.", 'img': "6.webp" },
             { 'frase': "7º passo: Compartilhar a dor é o início de encontrar a luz.", 'img': "7.webp" },
-            
+
             { 'frase': "continue caminhando: Sempre existe esperança. Você não está sozinho.", 'img': "9.gif" },
         ]
         shiftSlider.addEventListener('input', () => {
@@ -451,8 +477,8 @@
         const card = document.querySelectorAll(".card");
         const btn = document.querySelector(".flipBtn");
 
-        card.forEach((e,i)=>e.addEventListener('click',()=>{
-            e.classList.toggle("flipped");
+        card.forEach((e, i) => e.addEventListener('click', () => {
+            e.classList.add("flipped");
 
             anima[i].style.animation = "none";
             anima[i].offsetHeight;
