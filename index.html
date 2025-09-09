@@ -28,6 +28,18 @@
             flex-direction: row;
         }
 
+        @keyframes subir {
+            from {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
         .title {
             height: 100%;
             display: flex;
@@ -47,7 +59,7 @@
 
         footer {
             text-align: center;
-            background-color: #320061;
+            background-color: #310581;
             color: aliceblue;
             padding: 5px;
         }
@@ -86,6 +98,7 @@
             width: 100%;
             max-width: 900px;
             padding: 20px;
+            animation: subir 1s ease-out;
         }
 
         .container {
@@ -326,7 +339,7 @@
                     </div>
                 </div>
                 <div class="shift-control">
-                    <input type="range" id="shift" min="0" max="9" value="0">
+                    <input type="range" id="shift" min="0" max="8" value="0">
                     <div style="display: flex; justify-content: center;">
                         <img id="img-shift" src="1.webp" alt="" width="100px"
                             style="border-radius: 10px;margin-right: 5px;">
@@ -359,7 +372,7 @@
                     sente
                     de verdade.</p><br>
 
-                                    <div style="display: flex;flex-direction: row-reverse;border-bottom: 2px solid #555;">
+                <div style="display: flex;flex-direction: row-reverse;border-bottom: 2px solid #555;">
                     <img src="orb.webp" class="bola" alt="">
                     <img src="orb2.png" class="bola" alt="">
                 </div><br>
